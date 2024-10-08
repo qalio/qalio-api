@@ -1,6 +1,69 @@
+[submodule "adams"]
+	path = adams
+	url = git@github.com:qalio/qalio-api-adams.git
+[submodule "amazing"]
+	path = amazing
+	url = git@github.com:qalio/qalio-api-amazing.git
+[submodule "baron"]
+	path = baron
+	url = git@github.com:qalio/qalio-api-baron.git
+[submodule "basher"]
+	path = basher
+	url = git@github.com:qalio/qalio-api-basher.git
+[submodule "benedict"]
+	path = benedict
+	url = git@github.com:qalio/qalio-api-benedict.git
+[submodule "bloom"]
+	path = bloom
+	url = git@github.com:qalio/qalio-api-bloom.git
+[submodule "diaz"]
+	path = diaz
+	url = git@github.com:qalio/qalio-api-diaz.git
+[submodule "greco"]
+	path = greco
+	url = git@github.com:qalio/qalio-api-greco.git
+[submodule "holzer"]
+	path = holzer
+	url = git@github.com:qalio/qalio-api-holzer.git
 [submodule "joey"]
 	path = joey
 	url = git@github.com:qalio/qalio-api-joey.git
+[submodule "lahiri"]
+	path = lahiri
+	url = git@github.com:qalio/qalio-api-lahiri.git
+[submodule "linus"]
+	path = linus
+	url = git@github.com:qalio/qalio-api-linus.git
+[submodule "livingston"]
+	path = livingston
+	url = git@github.com:qalio/qalio-api-livingston.git
 [submodule "macy"]
 	path = macy
 	url = git@github.com:qalio/qalio-api-macy.git
+[submodule "matsui"]
+	path = matsui
+	url = git@github.com:qalio/qalio-api-matsui.git
+[submodule "nagel"]
+	path = nagel
+	url = git@github.com:qalio/qalio-api-nagel.git
+[submodule "nightfox"]
+	path = nightfox
+	url = git@github.com:qalio/qalio-api-nightfox.git
+[submodule "robin"]
+	path = robin
+	url = git@github.com:qalio/qalio-api-robin.git
+[submodule "rusty"]
+	path = rusty
+	url = git@github.com:qalio/qalio-api-rusty.git
+[submodule "sponder"]
+	path = sponder
+	url = git@github.com:qalio/qalio-api-sponder.git
+[submodule "turk"]
+	path = turk
+	url = git@github.com:qalio/qalio-api-turk.git
+[submodule "virgil"]
+	path = virgil
+	url = git@github.com:qalio/qalio-api-virgil.git
+[submodule "woude"]
+	path = woude
+	url = git@github.com:qalio/qalio-api-woude.git
