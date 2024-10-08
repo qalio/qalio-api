@@ -91,6 +91,7 @@ push:
 	@for dir in $(SUBPROJECTS); do \
 		echo "Processing $$dir..."; \
 		cd $$dir && git add . && git commit -m "$$dir: v-$(TAG)" && git tag v-$(TAG) && git push && git push origin v-$(TAG); \
+		cd ..; \
 	done
 
 # Help command
