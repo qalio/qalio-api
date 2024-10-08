@@ -102,7 +102,10 @@ submodule: submodule-add submodule-sync submodule-init submodule-status submodul
 .PHONY: submodule-add
 submodule-add:
 	@echo "Adding submodule(s)..."
-	@git submodule add --name $(SUBPROJECTS)
+	@for dir in $(SUBPROJECTS); do \
+		echo "Processing $$dir..."; \
+		git submodule add git@github.com:qalio/qalio-api-$$dir.git $$dir; \
+	done
 
 # Synchronize submodules
 .PHONY: submodule-sync
