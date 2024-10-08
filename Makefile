@@ -94,6 +94,52 @@ push:
 		cd ..; \
 	done
 
+# Submodule operations
+.PHONY: submodule
+submodule: submodule-add submodule-sync submodule-init submodule-status submodule-update
+
+# Add a submodule
+.PHONY: submodule-add
+submodule-add:
+	@echo "Adding submodule(s)..."
+	@git submodule add --name $(SUBPROJECTS)
+
+# Synchronize submodules
+.PHONY: submodule-sync
+submodule-sync:
+	@echo "Synchronizing submodule URLs..."
+	@git submodule sync --recursive
+
+# Initialize and update submodules (for fresh clones)
+.PHONY: submodule-init
+submodule-init:
+	@echo "Initializing and updating submodules..."
+	@git submodule update --init --recursive
+
+# Check status of submodules
+.PHONY: submodule-status
+submodule-status:
+	@echo "Checking submodule status..."
+	@git submodule status --recursive
+
+# Update submodules
+.PHONY: submodule-update
+submodule-update:
+	@echo "Updating submodules..."
+	@git submodule update --remote --merge --recursive
+
+# Delete a submodule
+.PHONY: submodule-delete
+submodule-delete:
+	@echo "Deleting submodule(s)..."
+	@for dir in $(SUBPROJECTS); do \
+		echo "Removing submodule $$dir..."; \
+		git submodule deinit -f $$dir; \
+		rm -rf .git/modules/$$dir; \
+		git rm -f $$dir; \
+		rm -rf $$dir; \
+	done
+
 # Help command
 .PHONY: help
 help:
@@ -106,4 +152,11 @@ help:
 	@echo "  make deploy   - Deploy services using kamal"
 	@echo "  make test     - Run tests for all subprojects"
 	@echo "  make push     - Push new changes up"
+	@echo "  make submodule         - Perform all submodule operations"
+	@echo "  make submodule-add     - Add submodule(s)"
+	@echo "  make submodule-sync    - Synchronize submodule URLs"
+	@echo "  make submodule-init-update - Initialize and update submodules"
+	@echo "  make submodule-status  - Check submodule status"
+	@echo "  make submodule-update  - Update submodules"
+	@echo "  make submodule-delete  - Delete submodule(s)"
 	@echo "  make help     - Show this help message"
