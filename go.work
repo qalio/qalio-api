@@ -1,0 +1,25 @@
+go 1.22.7
+
+use (
+	./adams
+	./amazing
+	./baron
+	./basher
+	./benedict
+	./bloom
+	./diaz
+	./greco
+	./holzer
+	./lahiri
+	./linus
+	./livingston
+	./matsui
+	./nagel
+	./nightfox
+	./robin
+	./rusty
+	./sponder
+	./turk
+	./virgil
+	./woude
+)
