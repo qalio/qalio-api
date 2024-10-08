@@ -1,6 +1,0 @@
-[submodule "joey"]
-	path = joey
-	url = git@github.com:qalio/qalio-api-joey.git
-[submodule "macy"]
-	path = macy
-	url = git@github.com:qalio/qalio-api-macy.git
