@@ -7,7 +7,7 @@ SUBPROJECTS := nightfox rusty basher amazing \
                matsui nagel benedict baron \
                woude lahiri diaz greco \
                bloom holzer adams sponder \
-               robin
+               robin joey macy
 
 # Organization name
 ORG_NAME := qalio
@@ -40,6 +40,7 @@ proto:
 	@for dir in $(SUBPROJECTS); do \
 		echo "Processing $$dir..."; \
 		cd $$dir && buf generate $(PROTO_DIR); \
+		cd ..; \
 	done
 
 # Lint Protobuf definitions
@@ -49,6 +50,7 @@ lint:
 	@for dir in $(SUBPROJECTS); do \
 		echo "Linting $$dir..."; \
 		cd $$dir && buf lint $(PROTO_DIR); \
+		cd ..; \
 	done
 
 # Format Protobuf definitions
@@ -58,6 +60,7 @@ format:
 	@for dir in $(SUBPROJECTS); do \
 		echo "Formatting $$dir..."; \
 		cd $$dir && buf format -w $(PROTO_DIR); \
+		cd ..; \
 	done
 
 # Clean build directories
@@ -129,7 +132,7 @@ submodule-status:
 .PHONY: submodule-update
 submodule-update:
 	@echo "Updating submodules..."
-	@git submodule update --remote --merge --recursive
+	git submodule update --remote --merge --recursive
 
 # Delete a submodule
 .PHONY: submodule-delete

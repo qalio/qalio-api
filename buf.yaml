@@ -1,0 +1,27 @@
+version: v1
+workspace:
+  directories:
+    - proto
+    - amazing/proto
+    - benedict/proto
+    - diaz/proto
+    - greco/proto
+    - lahiri/proto
+    - macy/proto
+    - nagel/proto
+    - robin/proto
+    - turk/proto
+    - baron/proto
+    - bloom/proto
+    - holzer/proto
+    - linus/proto
+    - nightfox/proto
+    - rusty/proto
+    - virgil/proto
+    - adams/proto
+    - basher/proto
+    - joey/proto
+    - livingston/proto
+    - matsui/proto
+    - sponder/proto
+    - woude/proto
