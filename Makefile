@@ -147,6 +147,82 @@ submodule-delete:
 		rm -rf $$dir; \
 	done
 
+# Secure repository permissions with branch protection rules
+.PHONY: secure-permissions
+secure-permissions:
+	@echo "Securing repository permissions and enforcing branch protection..."
+	@for dir in $(SUBPROJECTS); do \
+		echo "Processing $$dir..."; \
+		gh api repos/$(ORG_NAME)/qalio-api-$$dir \
+			--method PATCH \
+			-f visibility="public" \
+			-f delete_branch_on_merge=true \
+			-f has_wiki=false \
+			-f has_issues=false \
+			-f allow_merge_commit=false \
+			-f allow_squash_merge=true \
+			-f allow_rebase_merge=false; \
+		gh api repos/$(ORG_NAME)/qalio-api-$$dir/branches/main/protection \
+			--method PUT \
+			-H "Accept: application/vnd.github+json" \
+			-H "X-GitHub-Api-Version: 2022-11-28" \
+			-F "required_status_checks[strict]=true" \
+			-f "required_status_checks[contexts[]]=continuous-integration/travis-ci" \
+			-F "enforce_admins=true" \
+			-f "dismissal_restrictions[users[]]=octocat" \
+			-f "dismissal_restrictions[teams[]]=admins" \
+			-F "required_pull_request_reviews[dismiss_stale_reviews]=true" \
+			-F "required_pull_request_reviews[require_code_owner_reviews]=true" \
+			-F "required_pull_request_reviews[required_approving_review_count]=2" \
+			-F "required_pull_request_reviews[require_last_push_approval]=true" \
+			-f "bypass_pull_request_allowances[users[]]=octocat" \
+			-f "bypass_pull_request_allowances[teams[]]=admins" \
+			-f "restrictions[users[]]=octocat" \
+			-f "restrictions[teams[]]=admins" \
+			-f "restrictions[apps[]]=super-ci" \
+			-F "required_linear_history=true" \
+			-F "allow_force_pushes=true" \
+			-F "allow_deletions=true" \
+			-F "block_creations=true" \
+			-F "required_conversation_resolution=true" \
+			-F "lock_branch=true" \
+			-F "allow_fork_syncing=true"; \
+	done
+	gh api repos/$(ORG_NAME)/qalio-api \
+		--method PATCH \
+		-f visibility="public" \
+		-f delete_branch_on_merge=true \
+		-f has_wiki=false \
+		-f has_issues=false \
+		-f allow_merge_commit=false \
+		-f allow_squash_merge=true \
+		-f allow_rebase_merge=false; \
+	gh api repos/$(ORG_NAME)/qalio-api/branches/main/protection \
+		--method PUT \
+		-H "Accept: application/vnd.github+json" \
+		-H "X-GitHub-Api-Version: 2022-11-28" \
+		-F "required_status_checks[strict]=true" \
+		-f "required_status_checks[contexts[]]=continuous-integration/travis-ci" \
+		-F "enforce_admins=true" \
+		-f "dismissal_restrictions[users[]]=octocat" \
+		-f "dismissal_restrictions[teams[]]=admins" \
+		-F "required_pull_request_reviews[dismiss_stale_reviews]=true" \
+		-F "required_pull_request_reviews[require_code_owner_reviews]=true" \
+		-F "required_pull_request_reviews[required_approving_review_count]=2" \
+		-F "required_pull_request_reviews[require_last_push_approval]=true" \
+		-f "bypass_pull_request_allowances[users[]]=octocat" \
+		-f "bypass_pull_request_allowances[teams[]]=admins" \
+		-f "restrictions[users[]]=octocat" \
+		-f "restrictions[teams[]]=admins" \
+		-f "restrictions[apps[]]=super-ci" \
+		-F "required_linear_history=true" \
+		-F "allow_force_pushes=true" \
+		-F "allow_deletions=true" \
+		-F "block_creations=true" \
+		-F "required_conversation_resolution=true" \
+		-F "lock_branch=true" \
+		-F "allow_fork_syncing=true"; \
+
 # Help command
 .PHONY: help
 help:
@@ -166,4 +242,5 @@ help:
 	@echo "  make submodule-status  - Check submodule status"
 	@echo "  make submodule-update  - Update submodules"
 	@echo "  make submodule-delete  - Delete submodule(s)"
+	@echo "  make secure-permissions - Secure repository permissions with branch protection rules"
 	@echo "  make help     - Show this help message"
