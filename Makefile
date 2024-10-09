@@ -96,6 +96,7 @@ push:
 		cd $$dir && git add . && git commit -m "$$dir: v-$(TAG)" && git tag v-$(TAG) && git push && git push origin v-$(TAG); \
 		cd ..; \
 	done
+	git add . && git commit -m "api: v-$(TAG)" && git tag "v-$(TAG)" && git push && git push origin "v-$(TAG)"
 
 # Submodule operations
 .PHONY: submodule
