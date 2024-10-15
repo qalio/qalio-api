@@ -72,6 +72,30 @@ clean:
 		$(MAKE) -C $$dir clean; \
 	done
 
+# Check backwards compatibility
+.PHONY: check
+check:
+	@echo "Checking backwards compatibility ..."
+	@buf check breaking --against-input .git#branch=main
+
+# Update buf root protos
+.PHONY: update
+update:
+	@echo "Updating buf root proto ..."
+	@buf mod update proto
+
+# Tidy go modules
+.PHONY: tidy
+tidy:
+	@echo "Tidying up ..."
+	@go mod tidy
+
+# Get module
+.PHONY: get
+get:
+	@echo "Getting module ..."
+	@go get -u $(MOD)
+
 # Deploy using kamal
 .PHONY: deploy
 deploy:

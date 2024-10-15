@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package common.v1;
+
+message KYCRequest {
+  string user_id = 1;
+  string document_type = 2;
+  bytes document_image = 3;
+}
+
+message KYCResponse {
+  bool verified = 1;
+  string verification_id = 2;
+}
+
+service KYCService {
+  rpc VerifyUser(KYCRequest) returns (KYCResponse);
+}

@@ -1,27 +1,31 @@
 version: v1
+name: qalio/api
+deps:
+  - buf.build/googleapis/googleapis
+  - buf.build/grpc-ecosystem/grpc-gateway
 workspace:
   directories:
-    - proto
-    - amazing/proto
-    - benedict/proto
-    - diaz/proto
-    - greco/proto
-    - lahiri/proto
-    - macy/proto
-    - nagel/proto
-    - robin/proto
-    - turk/proto
-    - baron/proto
-    - bloom/proto
-    - holzer/proto
-    - linus/proto
-    - nightfox/proto
-    - rusty/proto
-    - virgil/proto
-    - adams/proto
-    - basher/proto
-    - joey/proto
-    - livingston/proto
-    - matsui/proto
-    - sponder/proto
-    - woude/proto
+    - proto/v1
+    - amazing/proto/v1
+    - benedict/proto/v1
+    - diaz/proto/v1
+    - greco/proto/v1
+    - lahiri/proto/v1
+    - macy/proto/v1
+    - nagel/proto/v1
+    - robin/proto/v1
+    - turk/proto/v1
+    - baron/proto/v1
+    - bloom/proto/v1
+    - holzer/proto/v1
+    - linus/proto/v1
+    - nightfox/proto/v1
+    - rusty/proto/v1
+    - virgil/proto/v1
+    - adams/proto/v1
+    - basher/proto/v1
+    - joey/proto/v1
+    - livingston/proto/v1
+    - matsui/proto/v1
+    - sponder/proto/v1
+    - woude/proto/v1
